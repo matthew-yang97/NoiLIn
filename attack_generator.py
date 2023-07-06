@@ -51,7 +51,7 @@ def eval_clean(model, test_loader):
     test_loss = 0
     correct = 0
     with torch.no_grad():
-        for data, target in test_loader:
+        for (data, target, Index) in test_loader:
             data, target = data.cuda(), target.cuda()
             output = model(data)
             test_loss += nn.CrossEntropyLoss(reduction='mean')(output, target).item()
@@ -67,7 +67,7 @@ def eval_robust(model, test_loader, perturb_steps, epsilon, step_size, loss_fn, 
     correct = 0
     AA = AutoAttack(model, eps=epsilon)
     with torch.enable_grad():
-        for data, target in test_loader:
+        for (data, target, Index) in test_loader:
             data, target = data.cuda(), target.cuda()
             if category == 'AA':
                 x_adv = AA.run_standard_evaluation(data, target, bs=len(target))
@@ -87,7 +87,7 @@ def eval_AA(model, test_loader, epsilon):
     correct = 0
     AA = AutoAttack(model, eps=epsilon)
     with torch.enable_grad():
-        for data, target in test_loader:
+        for (data, target, Index) in test_loader:
             data, target = data.cuda(), target.cuda()
             x_adv = AA.run_standard_evaluation(data, target, bs=len(target))
             output = model(x_adv)

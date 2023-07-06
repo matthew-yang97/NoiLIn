@@ -1,13 +1,8 @@
-#
-# For licensing see accompanying LICENSE file.
-# Copyright (C) 2019 Apple Inc. All Rights Reserved.
-#
-
-from torchvision.datasets import CIFAR100
+from NoiLIn_utils.cifar import CIFAR10
 import numpy as np
 
 
-class CIFAR100WithIdx(CIFAR100):
+class CIFAR10WithIdx(CIFAR10):
     """
     Extends CIFAR100 dataset to yield index of element in addition to image and target label.
     """
@@ -18,8 +13,8 @@ class CIFAR100WithIdx(CIFAR100):
                  transform=None,
                  target_transform=None,
                  download=False,
-                 rand_fraction=0.0):
-        super(CIFAR100WithIdx, self).__init__(root=root,
+                 rand_fraction=0.0,valid=False,valid_ratio=0.2):
+        super(CIFAR10WithIdx, self).__init__(root=root,
                                               train=train,
                                               transform=transform,
                                               target_transform=target_transform,

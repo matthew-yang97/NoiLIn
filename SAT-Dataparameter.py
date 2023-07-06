@@ -11,6 +11,10 @@ from NoiLIn_utils.svhn import SVHN
 from NoiLIn_utils.utils import noisify
 from models.resnet import *
 from models.wrn_madry import *
+from NoiLIn_utils.cifarIndex import CIFAR10WithIdx
+import dataparameter
+
+
 parser = argparse.ArgumentParser(description='PyTorch Adversarial Training with Automatic Noisy Labels Injection')
 ### Experimental setting ###
 parser.add_argument('--gpu', type=str, default='0')
@@ -25,7 +29,7 @@ parser.add_argument('--out_dir', type=str, default='./AT_NoiLIn_', help='dir of 
 parser.add_argument('--data_dir', type=str, default='../data', help='the directory to access to dataset')
 parser.add_argument('--resume', type=str, default='', help='whether to resume training, default: None')
 ### Training optimization setting ###
-parser.add_argument('--epochs', type=int, default=120, metavar='N', help='number of epochs to train')
+parser.add_argument('--epochs', type=int, default=200, metavar='N', help='number of epochs to train')
 parser.add_argument('--optimizer', type=str, default='sgd')
 parser.add_argument('--weight_decay', '--wd', default=5e-4, type=float, metavar='W')
 parser.add_argument('--lr_max', type=float, default=0.1, metavar='LR', help='learning rate')
@@ -43,6 +47,21 @@ parser.add_argument('--noise_type', type=str, default='symmetric',choices=['symm
 parser.add_argument('--lr_schedule', type=str, default='piecewise')
 parser.add_argument('--tau', type=int, help="sliding window size", default=10)
 parser.add_argument('--gamma', type=float, help="boosting rate",default=0.05)
+
+
+parser.add_argument('--learn_class_parameters', default=True, const=True, action='store_const',
+                    help='Learn temperature per class')
+parser.add_argument('--learn_inst_parameters', default=True, const=True, action='store_const',
+                    help='Learn temperature per instance')
+parser.add_argument('--skip_clamp_data_param', default=False, const=True, action='store_const',
+                    help='Do not clamp data parameters during optimization')
+parser.add_argument('--lr_class_param', default=0.1, type=float, help='Learning rate for class parameters')
+parser.add_argument('--lr_inst_param', default=0.1, type=float, help='Learning rate for instance parameters')
+parser.add_argument('--wd_class_param', default=0.0, type=float, help='Weight decay for class parameters')
+parser.add_argument('--wd_inst_param', default=0.0, type=float, help='Weight decay for instance parameters')
+parser.add_argument('--init_class_param', default=1.0, type=float, help='Initial value for class parameters')
+parser.add_argument('--init_inst_param', default=1.0, type=float, help='Initial value for instance parameters')
+
 args = parser.parse_args()
 print(args)
 
@@ -54,10 +73,20 @@ torch.cuda.manual_seed_all(args.seed)
 torch.backends.cudnn.deterministic = True
 torch.backends.cudnn.benchmark = False
 
-def train(model, train_loader, optimizer, epoch, nr):
+def train(model, train_loader, optimizer, epoch, nr, optimizer_data_parameters, data_parameters, config):
+
+
+
     starttime = datetime.datetime.now()
     loss_sum = 0
-    for batch_idx, (data, target) in enumerate(train_loader):
+    
+     # Unpack data parameters
+    optimizer_class_param, optimizer_inst_param = optimizer_data_parameters
+    class_parameters, inst_parameters = data_parameters
+
+    for batch_idx, (data, target, index_datasets) in enumerate(train_loader):
+      
+
         # Flip a portion of data at each training minibatch
         if args.noise_type != 'clean':
             train_labels = np.asarray([[target[i]] for i in range(len(target))])
@@ -76,19 +105,61 @@ def train(model, train_loader, optimizer, epoch, nr):
         model.train()
         lr = lr_schedule(epoch + 1)
         optimizer.param_groups[0].update(lr=lr)
+           # Flush the gradient buffer for model and data-parameters
         optimizer.zero_grad()
+        if args.learn_class_parameters:
+            optimizer_class_param.zero_grad()
+        if args.learn_inst_parameters:
+            optimizer_inst_param.zero_grad()
         output = model(x_adv)
+
+        if args.learn_class_parameters or args.learn_inst_parameters:
+            # Compute data parameters for instances in the minibatch
+            class_parameter_minibatch = class_parameters[target]
+
+            #改index dataset
+            inst_parameter_minibatch = inst_parameters[index_datasets]
+            data_parameter_minibatch = dataparameter.get_data_param_for_minibatch(
+                                            args,
+                                            class_param_minibatch=class_parameter_minibatch,
+                                            inst_param_minibatch=inst_parameter_minibatch)
+
+            # Compute logits scaled by data parameters
+            output = output / data_parameter_minibatch
+
+            print('==> dataparamter')
+            print(data_parameter_minibatch)
+            print('==> Output')
+            print(output)
 
         loss = nn.CrossEntropyLoss(reduction='mean')(output, noisy_labels)
 
-        if args.use_nat:
-            nat_output = model(data)
-            loss += nn.CrossEntropyLoss(reduction='mean')(nat_output, noisy_labels)
-            loss /= 2
-            
+        # Apply weight decay on data parameters
+        if args.learn_class_parameters or args.learn_inst_parameters:
+            loss = dataparameter.apply_weight_decay_data_parameters(args, loss,
+                                                            class_parameter_minibatch=class_parameter_minibatch,
+                                                            inst_parameter_minibatch=inst_parameter_minibatch)
+
+        # if args.use_nat:
+        #     nat_output = model(data)
+        #     loss += nn.CrossEntropyLoss(reduction='mean')(nat_output, noisy_labels)
+        #     loss /= 2
+        print('==> Loss')
+        print(loss)
+        if loss > 100:
+            return
         loss_sum += loss.item()
         loss.backward()
         optimizer.step()
+        if args.learn_class_parameters:
+            optimizer_class_param.step()
+        if args.learn_inst_parameters:
+            optimizer_inst_param.step()
+
+          # Clamp class and instance level parameters within certain bounds
+        if args.learn_class_parameters or args.learn_inst_parameters:
+            dataparameter.clamp_data_parameters(args, class_parameters, config, inst_parameters)
+
 
     # noise rate schedule
     endtime = datetime.datetime.now()
@@ -96,10 +167,17 @@ def train(model, train_loader, optimizer, epoch, nr):
     return time, loss_sum
 
 
-
-
-if __name__ == '__main__':    
-        # Learning schedules
+# config
+config = {}
+config['clamp_inst_sigma'] = {}
+config['clamp_inst_sigma']['min'] = np.log(1/20)
+config['clamp_inst_sigma']['max'] = np.log(20)
+config['clamp_cls_sigma'] = {}
+config['clamp_cls_sigma']['min'] = np.log(1/20)
+config['clamp_cls_sigma']['max'] = np.log(20)
+#dataparameter.save_config(args.save_dir, config)
+if __name__ == '__main__': 
+    # Learning schedules
     if args.lr_schedule == 'superconverge':
         lr_schedule = lambda t: np.interp([t], [0, args.epochs * 2 // 5, args.epochs], [0, args.lr_max, 0])[0]
     elif args.lr_schedule == 'piecewise':
@@ -137,9 +215,9 @@ if __name__ == '__main__':
 
     print('==> Load Data')
     if args.dataset == "cifar10":
-        train_dataset = CIFAR10(root=args.data_dir,download=True,train=True,transform=transform_train,valid=False,valid_ratio=0.02)
-        valid_dataset = CIFAR10(root=args.data_dir, download=True, train=False, transform=transform_test, valid=True,valid_ratio=0.02)
-        test_dataset = CIFAR10(root=args.data_dir, download=True, train=False, transform=transform_test, valid=False,valid_ratio=0.02)
+        train_dataset = CIFAR10WithIdx(root=args.data_dir,download=True,train=True,transform=transform_train,valid=False,valid_ratio=0.02)
+        valid_dataset = CIFAR10WithIdx(root=args.data_dir, download=True, train=False, transform=transform_test, valid=True,valid_ratio=0.02)
+        test_dataset = CIFAR10WithIdx(root=args.data_dir, download=True, train=False, transform=transform_test, valid=False,valid_ratio=0.02)
         num_classes = 10
     if args.dataset == "svhn":
         train_dataset = SVHN(root=args.data_dir, split='train', download=True, transform=transform_train,valid=False,valid_ratio=0.02)
@@ -230,8 +308,22 @@ if __name__ == '__main__':
         logger_test = Logger(os.path.join(out_dir, 'log_results.txt'), title=title)
         logger_test.set_names(['Epoch', 'Natural Test Acc', 'PGD10 Acc', 'Noise_rate', 'Valid_acc'])
 
+    (class_parameters, inst_parameters,
+        optimizer_class_param, optimizer_inst_param) = dataparameter.get_class_inst_data_params_n_optimizer(
+                                                            args=args,
+                                                            nr_classes=num_classes,
+                                                            nr_instances=len(train_loader.dataset),
+                                                            device='cuda'
+                                                            )
+
     for epoch in range(start_epoch, args.epochs):
-        train_time, train_loss = train(model, train_loader, optimizer, epoch, nr)
+        train_time, train_loss = train(model,
+                                    train_loader, 
+                                    optimizer, epoch, 
+                                    nr, 
+                                    optimizer_data_parameters=(optimizer_class_param, optimizer_inst_param),
+                                    data_parameters=(class_parameters, inst_parameters),
+                                    config=config)
 
         model.eval()
         loss, valid_pgd10_acc = attack.eval_robust(model, valid_loader, perturb_steps=args.num_steps, epsilon=args.epsilon,
@@ -284,5 +376,3 @@ if __name__ == '__main__':
             'valid_acc': valid_acc_list,
             'noise_rate': nr,
         }, filename='checkpoint_epoch{}.pth.tar'.format(epoch + 1))
-
-    
