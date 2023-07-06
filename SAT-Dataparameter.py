@@ -127,11 +127,6 @@ def train(model, train_loader, optimizer, epoch, nr, optimizer_data_parameters, 
             # Compute logits scaled by data parameters
             output = output / data_parameter_minibatch
 
-            print('==> dataparamter')
-            print(data_parameter_minibatch)
-            print('==> Output')
-            print(output)
-
         loss = nn.CrossEntropyLoss(reduction='mean')(output, noisy_labels)
 
         # Apply weight decay on data parameters
@@ -144,10 +139,6 @@ def train(model, train_loader, optimizer, epoch, nr, optimizer_data_parameters, 
         #     nat_output = model(data)
         #     loss += nn.CrossEntropyLoss(reduction='mean')(nat_output, noisy_labels)
         #     loss /= 2
-        print('==> Loss')
-        print(loss)
-        if loss > 100:
-            return
         loss_sum += loss.item()
         loss.backward()
         optimizer.step()
