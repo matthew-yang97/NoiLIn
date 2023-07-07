@@ -1,0 +1,836 @@
+Namespace(data_dir='../data', dataset='cifar10', depth=32, drop_rate=0.0, epochs=200, epsilon=0.031, gamma=0.05, gpu='0', init_class_param=1.0, init_inst_param=1.0, learn_class_parameters=True, learn_inst_parameters=True, lr_class_param=0.1, lr_inst_param=0.1, lr_max=0.1, lr_schedule='piecewise', max_noise_rate=0.6, min_noise_rate=0.05, momentum=0.9, net='ResNet18', noise_type='clean', num_steps=10, optimizer='sgd', out_dir='./AT_NoiLIn_', rand_init=True, resume='', seed=7, skip_clamp_data_param=False, step_size=0.007, tau=10, use_nat=0, wd_class_param=0.0, wd_inst_param=0.0, weight_decay=0.0005, width_factor=10)
+==> Load Data
+Files already downloaded and verified
+Files already downloaded and verified
+Files already downloaded and verified
+==> Load Model
+ResNet18
+./AT_NoiLIn_ResNet18_cifar10_piecewise_eps0.031_clean_seed7
+==> STA-NoiLIn
+Warning: skip_update_zero_grad set to True. We will zero out update to state and momentum buffer for parameters with zero gradient. 
+Initialized class_parameters with: 1.0
+optimizer_class_param:
+SparseSGD (
+Parameter Group 0
+    dampening: 0
+    lr: 0.1
+    momentum: 0.9
+    nesterov: False
+    weight_decay: 0
+)
+Warning: skip_update_zero_grad set to True. We will zero out update to state and momentum buffer for parameters with zero gradient. 
+Initialized inst_parameters with: 1.0
+optimizer_inst_param:
+SparseSGD (
+Parameter Group 0
+    dampening: 0
+    lr: 0.1
+    momentum: 0.9
+    nesterov: False
+    weight_decay: 0
+)
+setting parameters for standard version
+/home/spacehacker/yangkun/NoiLIn/optimizer/sparse_sgd.py:82: UserWarning: This overload of add_ is deprecated:
+	add_(Number alpha, Tensor other)
+Consider using one of the following signatures instead:
+	add_(Tensor other, *, Number alpha) (Triggered internally at  ../torch/csrc/utils/python_arg_parser.cpp:1050.)
+  p.data.add_(-group['lr'], d_p)
+setting parameters for standard version
+Epoch: [1 | 200] | Train Time: 109.00 s | Natural Test Acc 0.3050 | PGD10 Test Acc 0.2249 | Noise Rate 0.0500 | Valid Acc 0.2248
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [2 | 200] | Train Time: 111.00 s | Natural Test Acc 0.2892 | PGD10 Test Acc 0.2162 | Noise Rate 0.0500 | Valid Acc 0.2162
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [3 | 200] | Train Time: 111.00 s | Natural Test Acc 0.3083 | PGD10 Test Acc 0.2273 | Noise Rate 0.0500 | Valid Acc 0.2272
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [4 | 200] | Train Time: 111.00 s | Natural Test Acc 0.3247 | PGD10 Test Acc 0.1974 | Noise Rate 0.0500 | Valid Acc 0.1980
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [5 | 200] | Train Time: 111.00 s | Natural Test Acc 0.4231 | PGD10 Test Acc 0.2778 | Noise Rate 0.0500 | Valid Acc 0.2777
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [6 | 200] | Train Time: 111.00 s | Natural Test Acc 0.4173 | PGD10 Test Acc 0.2632 | Noise Rate 0.0500 | Valid Acc 0.2622
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [7 | 200] | Train Time: 111.00 s | Natural Test Acc 0.4471 | PGD10 Test Acc 0.2979 | Noise Rate 0.0500 | Valid Acc 0.2976
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [8 | 200] | Train Time: 111.00 s | Natural Test Acc 0.4725 | PGD10 Test Acc 0.3181 | Noise Rate 0.0500 | Valid Acc 0.3178
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [9 | 200] | Train Time: 111.00 s | Natural Test Acc 0.4530 | PGD10 Test Acc 0.3147 | Noise Rate 0.0500 | Valid Acc 0.3148
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [10 | 200] | Train Time: 111.00 s | Natural Test Acc 0.4482 | PGD10 Test Acc 0.2894 | Noise Rate 0.0500 | Valid Acc 0.2895
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [11 | 200] | Train Time: 111.00 s | Natural Test Acc 0.4941 | PGD10 Test Acc 0.3208 | Noise Rate 0.0500 | Valid Acc 0.3210
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [12 | 200] | Train Time: 111.00 s | Natural Test Acc 0.5184 | PGD10 Test Acc 0.3383 | Noise Rate 0.0500 | Valid Acc 0.3384
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [13 | 200] | Train Time: 111.00 s | Natural Test Acc 0.4742 | PGD10 Test Acc 0.3224 | Noise Rate 0.0500 | Valid Acc 0.3226
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [14 | 200] | Train Time: 111.00 s | Natural Test Acc 0.5567 | PGD10 Test Acc 0.3480 | Noise Rate 0.0500 | Valid Acc 0.3482
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [15 | 200] | Train Time: 111.00 s | Natural Test Acc 0.5330 | PGD10 Test Acc 0.3358 | Noise Rate 0.0500 | Valid Acc 0.3353
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [16 | 200] | Train Time: 111.00 s | Natural Test Acc 0.5533 | PGD10 Test Acc 0.3542 | Noise Rate 0.0500 | Valid Acc 0.3552
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [17 | 200] | Train Time: 111.00 s | Natural Test Acc 0.5393 | PGD10 Test Acc 0.3579 | Noise Rate 0.0500 | Valid Acc 0.3583
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [18 | 200] | Train Time: 111.00 s | Natural Test Acc 0.5521 | PGD10 Test Acc 0.3428 | Noise Rate 0.0500 | Valid Acc 0.3433
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [19 | 200] | Train Time: 111.00 s | Natural Test Acc 0.5456 | PGD10 Test Acc 0.3683 | Noise Rate 0.0500 | Valid Acc 0.3686
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [20 | 200] | Train Time: 111.00 s | Natural Test Acc 0.5668 | PGD10 Test Acc 0.3847 | Noise Rate 0.0500 | Valid Acc 0.3845
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [21 | 200] | Train Time: 111.00 s | Natural Test Acc 0.5715 | PGD10 Test Acc 0.3819 | Noise Rate 0.0500 | Valid Acc 0.3818
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [22 | 200] | Train Time: 111.00 s | Natural Test Acc 0.5423 | PGD10 Test Acc 0.3718 | Noise Rate 0.0500 | Valid Acc 0.3714
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [23 | 200] | Train Time: 111.00 s | Natural Test Acc 0.5597 | PGD10 Test Acc 0.3281 | Noise Rate 0.0500 | Valid Acc 0.3277
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [24 | 200] | Train Time: 111.00 s | Natural Test Acc 0.5748 | PGD10 Test Acc 0.3716 | Noise Rate 0.0500 | Valid Acc 0.3715
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [25 | 200] | Train Time: 111.00 s | Natural Test Acc 0.5775 | PGD10 Test Acc 0.3931 | Noise Rate 0.0500 | Valid Acc 0.3925
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [26 | 200] | Train Time: 110.00 s | Natural Test Acc 0.5689 | PGD10 Test Acc 0.3816 | Noise Rate 0.0500 | Valid Acc 0.3818
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [27 | 200] | Train Time: 111.00 s | Natural Test Acc 0.5813 | PGD10 Test Acc 0.3749 | Noise Rate 0.0500 | Valid Acc 0.3745
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [28 | 200] | Train Time: 110.00 s | Natural Test Acc 0.5739 | PGD10 Test Acc 0.3796 | Noise Rate 0.0500 | Valid Acc 0.3804
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [29 | 200] | Train Time: 111.00 s | Natural Test Acc 0.5925 | PGD10 Test Acc 0.3943 | Noise Rate 0.0500 | Valid Acc 0.3946
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [30 | 200] | Train Time: 111.00 s | Natural Test Acc 0.5819 | PGD10 Test Acc 0.3882 | Noise Rate 0.0500 | Valid Acc 0.3886
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [31 | 200] | Train Time: 110.00 s | Natural Test Acc 0.5759 | PGD10 Test Acc 0.3901 | Noise Rate 0.0500 | Valid Acc 0.3898
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [32 | 200] | Train Time: 111.00 s | Natural Test Acc 0.5992 | PGD10 Test Acc 0.3984 | Noise Rate 0.0500 | Valid Acc 0.3980
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [33 | 200] | Train Time: 110.00 s | Natural Test Acc 0.5631 | PGD10 Test Acc 0.3865 | Noise Rate 0.0500 | Valid Acc 0.3858
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [34 | 200] | Train Time: 111.00 s | Natural Test Acc 0.5766 | PGD10 Test Acc 0.3925 | Noise Rate 0.0500 | Valid Acc 0.3918
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [35 | 200] | Train Time: 111.00 s | Natural Test Acc 0.5924 | PGD10 Test Acc 0.3910 | Noise Rate 0.0525 | Valid Acc 0.3911
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [36 | 200] | Train Time: 110.00 s | Natural Test Acc 0.5545 | PGD10 Test Acc 0.3640 | Noise Rate 0.0551 | Valid Acc 0.3644
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [37 | 200] | Train Time: 111.00 s | Natural Test Acc 0.5662 | PGD10 Test Acc 0.3864 | Noise Rate 0.0551 | Valid Acc 0.3868
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [38 | 200] | Train Time: 110.00 s | Natural Test Acc 0.5840 | PGD10 Test Acc 0.4037 | Noise Rate 0.0551 | Valid Acc 0.4048
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [39 | 200] | Train Time: 111.00 s | Natural Test Acc 0.5790 | PGD10 Test Acc 0.3581 | Noise Rate 0.0579 | Valid Acc 0.3576
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [40 | 200] | Train Time: 110.00 s | Natural Test Acc 0.5499 | PGD10 Test Acc 0.3320 | Noise Rate 0.0608 | Valid Acc 0.3326
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [41 | 200] | Train Time: 111.00 s | Natural Test Acc 0.5858 | PGD10 Test Acc 0.4006 | Noise Rate 0.0608 | Valid Acc 0.3995
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [42 | 200] | Train Time: 110.00 s | Natural Test Acc 0.5776 | PGD10 Test Acc 0.3657 | Noise Rate 0.0638 | Valid Acc 0.3659
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [43 | 200] | Train Time: 111.00 s | Natural Test Acc 0.5833 | PGD10 Test Acc 0.3907 | Noise Rate 0.0638 | Valid Acc 0.3906
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [44 | 200] | Train Time: 110.00 s | Natural Test Acc 0.5964 | PGD10 Test Acc 0.3826 | Noise Rate 0.0670 | Valid Acc 0.3827
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [45 | 200] | Train Time: 110.00 s | Natural Test Acc 0.5889 | PGD10 Test Acc 0.3860 | Noise Rate 0.0704 | Valid Acc 0.3862
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [46 | 200] | Train Time: 111.00 s | Natural Test Acc 0.5858 | PGD10 Test Acc 0.3854 | Noise Rate 0.0704 | Valid Acc 0.3852
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [47 | 200] | Train Time: 110.00 s | Natural Test Acc 0.5682 | PGD10 Test Acc 0.3793 | Noise Rate 0.0739 | Valid Acc 0.3794
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [48 | 200] | Train Time: 110.00 s | Natural Test Acc 0.5838 | PGD10 Test Acc 0.3920 | Noise Rate 0.0776 | Valid Acc 0.3922
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [49 | 200] | Train Time: 110.00 s | Natural Test Acc 0.5866 | PGD10 Test Acc 0.3860 | Noise Rate 0.0776 | Valid Acc 0.3859
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [50 | 200] | Train Time: 110.00 s | Natural Test Acc 0.6053 | PGD10 Test Acc 0.3933 | Noise Rate 0.0776 | Valid Acc 0.3940
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [51 | 200] | Train Time: 110.00 s | Natural Test Acc 0.5863 | PGD10 Test Acc 0.4032 | Noise Rate 0.0776 | Valid Acc 0.4041
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [52 | 200] | Train Time: 110.00 s | Natural Test Acc 0.5944 | PGD10 Test Acc 0.3861 | Noise Rate 0.0776 | Valid Acc 0.3861
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [53 | 200] | Train Time: 110.00 s | Natural Test Acc 0.5829 | PGD10 Test Acc 0.3913 | Noise Rate 0.0776 | Valid Acc 0.3915
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [54 | 200] | Train Time: 110.00 s | Natural Test Acc 0.5658 | PGD10 Test Acc 0.3565 | Noise Rate 0.0814 | Valid Acc 0.3556
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [55 | 200] | Train Time: 110.00 s | Natural Test Acc 0.5925 | PGD10 Test Acc 0.3711 | Noise Rate 0.0855 | Valid Acc 0.3709
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [56 | 200] | Train Time: 110.00 s | Natural Test Acc 0.6200 | PGD10 Test Acc 0.4045 | Noise Rate 0.0855 | Valid Acc 0.4045
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [57 | 200] | Train Time: 110.00 s | Natural Test Acc 0.6287 | PGD10 Test Acc 0.4098 | Noise Rate 0.0855 | Valid Acc 0.4098
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [58 | 200] | Train Time: 110.00 s | Natural Test Acc 0.6037 | PGD10 Test Acc 0.3765 | Noise Rate 0.0898 | Valid Acc 0.3764
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [59 | 200] | Train Time: 110.00 s | Natural Test Acc 0.6068 | PGD10 Test Acc 0.4138 | Noise Rate 0.0898 | Valid Acc 0.4141
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [60 | 200] | Train Time: 111.00 s | Natural Test Acc 0.6385 | PGD10 Test Acc 0.4089 | Noise Rate 0.0898 | Valid Acc 0.4089
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [61 | 200] | Train Time: 110.00 s | Natural Test Acc 0.5951 | PGD10 Test Acc 0.4029 | Noise Rate 0.0943 | Valid Acc 0.4030
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [62 | 200] | Train Time: 110.00 s | Natural Test Acc 0.5903 | PGD10 Test Acc 0.3985 | Noise Rate 0.0943 | Valid Acc 0.3986
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [63 | 200] | Train Time: 110.00 s | Natural Test Acc 0.6262 | PGD10 Test Acc 0.4022 | Noise Rate 0.0943 | Valid Acc 0.4020
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [64 | 200] | Train Time: 110.00 s | Natural Test Acc 0.6232 | PGD10 Test Acc 0.4105 | Noise Rate 0.0943 | Valid Acc 0.4101
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [65 | 200] | Train Time: 110.00 s | Natural Test Acc 0.6012 | PGD10 Test Acc 0.4045 | Noise Rate 0.0943 | Valid Acc 0.4043
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [66 | 200] | Train Time: 110.00 s | Natural Test Acc 0.5973 | PGD10 Test Acc 0.3787 | Noise Rate 0.0990 | Valid Acc 0.3788
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [67 | 200] | Train Time: 110.00 s | Natural Test Acc 0.6260 | PGD10 Test Acc 0.4077 | Noise Rate 0.1039 | Valid Acc 0.4083
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [68 | 200] | Train Time: 110.00 s | Natural Test Acc 0.6206 | PGD10 Test Acc 0.3838 | Noise Rate 0.1039 | Valid Acc 0.3833
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [69 | 200] | Train Time: 110.00 s | Natural Test Acc 0.6034 | PGD10 Test Acc 0.3843 | Noise Rate 0.1091 | Valid Acc 0.3842
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [70 | 200] | Train Time: 110.00 s | Natural Test Acc 0.6181 | PGD10 Test Acc 0.3997 | Noise Rate 0.1146 | Valid Acc 0.3994
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [71 | 200] | Train Time: 110.00 s | Natural Test Acc 0.6094 | PGD10 Test Acc 0.3777 | Noise Rate 0.1203 | Valid Acc 0.3778
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [72 | 200] | Train Time: 110.00 s | Natural Test Acc 0.6416 | PGD10 Test Acc 0.4175 | Noise Rate 0.1203 | Valid Acc 0.4170
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [73 | 200] | Train Time: 110.00 s | Natural Test Acc 0.6089 | PGD10 Test Acc 0.4075 | Noise Rate 0.1203 | Valid Acc 0.4083
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [74 | 200] | Train Time: 110.00 s | Natural Test Acc 0.6327 | PGD10 Test Acc 0.4113 | Noise Rate 0.1203 | Valid Acc 0.4106
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [75 | 200] | Train Time: 110.00 s | Natural Test Acc 0.6201 | PGD10 Test Acc 0.3793 | Noise Rate 0.1263 | Valid Acc 0.3798
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [76 | 200] | Train Time: 110.00 s | Natural Test Acc 0.5888 | PGD10 Test Acc 0.3694 | Noise Rate 0.1327 | Valid Acc 0.3689
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [77 | 200] | Train Time: 111.00 s | Natural Test Acc 0.6287 | PGD10 Test Acc 0.3991 | Noise Rate 0.1393 | Valid Acc 0.3986
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [78 | 200] | Train Time: 110.00 s | Natural Test Acc 0.6260 | PGD10 Test Acc 0.4108 | Noise Rate 0.1393 | Valid Acc 0.4110
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [79 | 200] | Train Time: 110.00 s | Natural Test Acc 0.6163 | PGD10 Test Acc 0.4083 | Noise Rate 0.1393 | Valid Acc 0.4087
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [80 | 200] | Train Time: 110.00 s | Natural Test Acc 0.6296 | PGD10 Test Acc 0.4215 | Noise Rate 0.1393 | Valid Acc 0.4217
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [81 | 200] | Train Time: 110.00 s | Natural Test Acc 0.6337 | PGD10 Test Acc 0.4078 | Noise Rate 0.1393 | Valid Acc 0.4081
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [82 | 200] | Train Time: 110.00 s | Natural Test Acc 0.6397 | PGD10 Test Acc 0.3955 | Noise Rate 0.1463 | Valid Acc 0.3966
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [83 | 200] | Train Time: 111.00 s | Natural Test Acc 0.6051 | PGD10 Test Acc 0.4186 | Noise Rate 0.1463 | Valid Acc 0.4182
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [84 | 200] | Train Time: 111.00 s | Natural Test Acc 0.6240 | PGD10 Test Acc 0.3917 | Noise Rate 0.1536 | Valid Acc 0.3918
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [85 | 200] | Train Time: 110.00 s | Natural Test Acc 0.6175 | PGD10 Test Acc 0.4087 | Noise Rate 0.1536 | Valid Acc 0.4086
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [86 | 200] | Train Time: 110.00 s | Natural Test Acc 0.6156 | PGD10 Test Acc 0.3680 | Noise Rate 0.1613 | Valid Acc 0.3672
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [87 | 200] | Train Time: 110.00 s | Natural Test Acc 0.5805 | PGD10 Test Acc 0.3508 | Noise Rate 0.1693 | Valid Acc 0.3499
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [88 | 200] | Train Time: 110.00 s | Natural Test Acc 0.6281 | PGD10 Test Acc 0.4021 | Noise Rate 0.1778 | Valid Acc 0.4025
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [89 | 200] | Train Time: 110.00 s | Natural Test Acc 0.6301 | PGD10 Test Acc 0.4049 | Noise Rate 0.1867 | Valid Acc 0.4055
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [90 | 200] | Train Time: 110.00 s | Natural Test Acc 0.6105 | PGD10 Test Acc 0.4035 | Noise Rate 0.1960 | Valid Acc 0.4031
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [91 | 200] | Train Time: 110.00 s | Natural Test Acc 0.6056 | PGD10 Test Acc 0.4005 | Noise Rate 0.2058 | Valid Acc 0.4007
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [92 | 200] | Train Time: 110.00 s | Natural Test Acc 0.6165 | PGD10 Test Acc 0.4067 | Noise Rate 0.2058 | Valid Acc 0.4067
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [93 | 200] | Train Time: 110.00 s | Natural Test Acc 0.6107 | PGD10 Test Acc 0.4015 | Noise Rate 0.2161 | Valid Acc 0.4013
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [94 | 200] | Train Time: 110.00 s | Natural Test Acc 0.6296 | PGD10 Test Acc 0.4110 | Noise Rate 0.2161 | Valid Acc 0.4111
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [95 | 200] | Train Time: 111.00 s | Natural Test Acc 0.6243 | PGD10 Test Acc 0.4126 | Noise Rate 0.2161 | Valid Acc 0.4132
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [96 | 200] | Train Time: 110.00 s | Natural Test Acc 0.6082 | PGD10 Test Acc 0.4078 | Noise Rate 0.2161 | Valid Acc 0.4077
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [97 | 200] | Train Time: 111.00 s | Natural Test Acc 0.6132 | PGD10 Test Acc 0.3824 | Noise Rate 0.2161 | Valid Acc 0.3823
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [98 | 200] | Train Time: 110.00 s | Natural Test Acc 0.6317 | PGD10 Test Acc 0.4164 | Noise Rate 0.2161 | Valid Acc 0.4160
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [99 | 200] | Train Time: 111.00 s | Natural Test Acc 0.6178 | PGD10 Test Acc 0.4042 | Noise Rate 0.2269 | Valid Acc 0.4043
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [100 | 200] | Train Time: 110.00 s | Natural Test Acc 0.6857 | PGD10 Test Acc 0.4772 | Noise Rate 0.2269 | Valid Acc 0.4770
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [101 | 200] | Train Time: 111.00 s | Natural Test Acc 0.6971 | PGD10 Test Acc 0.4787 | Noise Rate 0.2269 | Valid Acc 0.4793
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [102 | 200] | Train Time: 110.00 s | Natural Test Acc 0.7062 | PGD10 Test Acc 0.4872 | Noise Rate 0.2269 | Valid Acc 0.4865
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [103 | 200] | Train Time: 110.00 s | Natural Test Acc 0.7073 | PGD10 Test Acc 0.4885 | Noise Rate 0.2269 | Valid Acc 0.4885
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [104 | 200] | Train Time: 110.00 s | Natural Test Acc 0.7020 | PGD10 Test Acc 0.4916 | Noise Rate 0.2269 | Valid Acc 0.4919
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [105 | 200] | Train Time: 110.00 s | Natural Test Acc 0.7086 | PGD10 Test Acc 0.4890 | Noise Rate 0.2269 | Valid Acc 0.4892
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [106 | 200] | Train Time: 110.00 s | Natural Test Acc 0.7210 | PGD10 Test Acc 0.4907 | Noise Rate 0.2269 | Valid Acc 0.4916
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [107 | 200] | Train Time: 110.00 s | Natural Test Acc 0.7116 | PGD10 Test Acc 0.4909 | Noise Rate 0.2269 | Valid Acc 0.4906
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [108 | 200] | Train Time: 110.00 s | Natural Test Acc 0.7102 | PGD10 Test Acc 0.4915 | Noise Rate 0.2269 | Valid Acc 0.4920
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [109 | 200] | Train Time: 111.00 s | Natural Test Acc 0.7145 | PGD10 Test Acc 0.4927 | Noise Rate 0.2269 | Valid Acc 0.4927
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [110 | 200] | Train Time: 110.00 s | Natural Test Acc 0.7149 | PGD10 Test Acc 0.4861 | Noise Rate 0.2269 | Valid Acc 0.4855
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [111 | 200] | Train Time: 110.00 s | Natural Test Acc 0.7051 | PGD10 Test Acc 0.4847 | Noise Rate 0.2269 | Valid Acc 0.4845
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [112 | 200] | Train Time: 110.00 s | Natural Test Acc 0.7144 | PGD10 Test Acc 0.4872 | Noise Rate 0.2269 | Valid Acc 0.4871
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [113 | 200] | Train Time: 111.00 s | Natural Test Acc 0.7234 | PGD10 Test Acc 0.4921 | Noise Rate 0.2269 | Valid Acc 0.4913
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [114 | 200] | Train Time: 110.00 s | Natural Test Acc 0.7137 | PGD10 Test Acc 0.4866 | Noise Rate 0.2382 | Valid Acc 0.4861
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [115 | 200] | Train Time: 110.00 s | Natural Test Acc 0.7306 | PGD10 Test Acc 0.4877 | Noise Rate 0.2502 | Valid Acc 0.4882
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [116 | 200] | Train Time: 111.00 s | Natural Test Acc 0.7178 | PGD10 Test Acc 0.4884 | Noise Rate 0.2627 | Valid Acc 0.4878
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [117 | 200] | Train Time: 110.00 s | Natural Test Acc 0.7244 | PGD10 Test Acc 0.4896 | Noise Rate 0.2758 | Valid Acc 0.4892
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [118 | 200] | Train Time: 110.00 s | Natural Test Acc 0.7184 | PGD10 Test Acc 0.4801 | Noise Rate 0.2896 | Valid Acc 0.4798
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [119 | 200] | Train Time: 110.00 s | Natural Test Acc 0.7287 | PGD10 Test Acc 0.4887 | Noise Rate 0.3041 | Valid Acc 0.4883
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [120 | 200] | Train Time: 110.00 s | Natural Test Acc 0.7141 | PGD10 Test Acc 0.4833 | Noise Rate 0.3193 | Valid Acc 0.4831
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [121 | 200] | Train Time: 110.00 s | Natural Test Acc 0.7185 | PGD10 Test Acc 0.4880 | Noise Rate 0.3193 | Valid Acc 0.4878
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [122 | 200] | Train Time: 110.00 s | Natural Test Acc 0.7147 | PGD10 Test Acc 0.4851 | Noise Rate 0.3352 | Valid Acc 0.4860
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [123 | 200] | Train Time: 111.00 s | Natural Test Acc 0.7323 | PGD10 Test Acc 0.4809 | Noise Rate 0.3520 | Valid Acc 0.4810
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [124 | 200] | Train Time: 110.00 s | Natural Test Acc 0.7299 | PGD10 Test Acc 0.4816 | Noise Rate 0.3696 | Valid Acc 0.4813
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [125 | 200] | Train Time: 111.00 s | Natural Test Acc 0.7219 | PGD10 Test Acc 0.4763 | Noise Rate 0.3881 | Valid Acc 0.4755
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [126 | 200] | Train Time: 110.00 s | Natural Test Acc 0.7101 | PGD10 Test Acc 0.4783 | Noise Rate 0.4075 | Valid Acc 0.4778
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [127 | 200] | Train Time: 110.00 s | Natural Test Acc 0.7323 | PGD10 Test Acc 0.4765 | Noise Rate 0.4279 | Valid Acc 0.4764
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [128 | 200] | Train Time: 111.00 s | Natural Test Acc 0.7061 | PGD10 Test Acc 0.4714 | Noise Rate 0.4493 | Valid Acc 0.4712
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [129 | 200] | Train Time: 111.00 s | Natural Test Acc 0.7180 | PGD10 Test Acc 0.4783 | Noise Rate 0.4717 | Valid Acc 0.4780
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [130 | 200] | Train Time: 111.00 s | Natural Test Acc 0.7285 | PGD10 Test Acc 0.4846 | Noise Rate 0.4717 | Valid Acc 0.4843
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [131 | 200] | Train Time: 111.00 s | Natural Test Acc 0.7354 | PGD10 Test Acc 0.4783 | Noise Rate 0.4953 | Valid Acc 0.4778
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [132 | 200] | Train Time: 110.00 s | Natural Test Acc 0.7336 | PGD10 Test Acc 0.4829 | Noise Rate 0.5201 | Valid Acc 0.4829
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [133 | 200] | Train Time: 110.00 s | Natural Test Acc 0.6999 | PGD10 Test Acc 0.4678 | Noise Rate 0.5461 | Valid Acc 0.4675
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [134 | 200] | Train Time: 111.00 s | Natural Test Acc 0.7346 | PGD10 Test Acc 0.4740 | Noise Rate 0.5734 | Valid Acc 0.4738
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [135 | 200] | Train Time: 110.00 s | Natural Test Acc 0.7251 | PGD10 Test Acc 0.4805 | Noise Rate 0.5734 | Valid Acc 0.4811
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [136 | 200] | Train Time: 110.00 s | Natural Test Acc 0.7361 | PGD10 Test Acc 0.4836 | Noise Rate 0.5734 | Valid Acc 0.4830
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [137 | 200] | Train Time: 110.00 s | Natural Test Acc 0.7273 | PGD10 Test Acc 0.4747 | Noise Rate 0.6000 | Valid Acc 0.4743
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [138 | 200] | Train Time: 110.00 s | Natural Test Acc 0.7323 | PGD10 Test Acc 0.4787 | Noise Rate 0.6000 | Valid Acc 0.4790
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [139 | 200] | Train Time: 111.00 s | Natural Test Acc 0.7187 | PGD10 Test Acc 0.4758 | Noise Rate 0.6000 | Valid Acc 0.4763
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [140 | 200] | Train Time: 110.00 s | Natural Test Acc 0.7121 | PGD10 Test Acc 0.4757 | Noise Rate 0.6000 | Valid Acc 0.4767
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [141 | 200] | Train Time: 110.00 s | Natural Test Acc 0.7276 | PGD10 Test Acc 0.4805 | Noise Rate 0.6000 | Valid Acc 0.4812
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [142 | 200] | Train Time: 110.00 s | Natural Test Acc 0.7394 | PGD10 Test Acc 0.4646 | Noise Rate 0.6000 | Valid Acc 0.4656
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [143 | 200] | Train Time: 110.00 s | Natural Test Acc 0.7333 | PGD10 Test Acc 0.4783 | Noise Rate 0.6000 | Valid Acc 0.4784
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [144 | 200] | Train Time: 110.00 s | Natural Test Acc 0.7241 | PGD10 Test Acc 0.4762 | Noise Rate 0.6000 | Valid Acc 0.4759
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [145 | 200] | Train Time: 110.00 s | Natural Test Acc 0.7315 | PGD10 Test Acc 0.4774 | Noise Rate 0.6000 | Valid Acc 0.4772
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [146 | 200] | Train Time: 110.00 s | Natural Test Acc 0.7182 | PGD10 Test Acc 0.4748 | Noise Rate 0.6000 | Valid Acc 0.4744
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [147 | 200] | Train Time: 110.00 s | Natural Test Acc 0.7406 | PGD10 Test Acc 0.4791 | Noise Rate 0.6000 | Valid Acc 0.4782
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [148 | 200] | Train Time: 110.00 s | Natural Test Acc 0.7402 | PGD10 Test Acc 0.4811 | Noise Rate 0.6000 | Valid Acc 0.4804
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [149 | 200] | Train Time: 110.00 s | Natural Test Acc 0.7380 | PGD10 Test Acc 0.4798 | Noise Rate 0.6000 | Valid Acc 0.4803
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [150 | 200] | Train Time: 110.00 s | Natural Test Acc 0.7717 | PGD10 Test Acc 0.5011 | Noise Rate 0.6000 | Valid Acc 0.5009
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [151 | 200] | Train Time: 110.00 s | Natural Test Acc 0.7715 | PGD10 Test Acc 0.5014 | Noise Rate 0.6000 | Valid Acc 0.5019
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [152 | 200] | Train Time: 110.00 s | Natural Test Acc 0.7743 | PGD10 Test Acc 0.5019 | Noise Rate 0.6000 | Valid Acc 0.5028
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [153 | 200] | Train Time: 111.00 s | Natural Test Acc 0.7726 | PGD10 Test Acc 0.5052 | Noise Rate 0.6000 | Valid Acc 0.5052
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [154 | 200] | Train Time: 110.00 s | Natural Test Acc 0.7730 | PGD10 Test Acc 0.5039 | Noise Rate 0.6000 | Valid Acc 0.5031
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [155 | 200] | Train Time: 111.00 s | Natural Test Acc 0.7830 | PGD10 Test Acc 0.5015 | Noise Rate 0.6000 | Valid Acc 0.5019
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [156 | 200] | Train Time: 110.00 s | Natural Test Acc 0.7792 | PGD10 Test Acc 0.5002 | Noise Rate 0.6000 | Valid Acc 0.5006
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [157 | 200] | Train Time: 111.00 s | Natural Test Acc 0.7824 | PGD10 Test Acc 0.5000 | Noise Rate 0.6000 | Valid Acc 0.5003
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [158 | 200] | Train Time: 110.00 s | Natural Test Acc 0.7845 | PGD10 Test Acc 0.5019 | Noise Rate 0.6000 | Valid Acc 0.5032
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [159 | 200] | Train Time: 110.00 s | Natural Test Acc 0.7835 | PGD10 Test Acc 0.5015 | Noise Rate 0.6000 | Valid Acc 0.5015
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [160 | 200] | Train Time: 110.00 s | Natural Test Acc 0.7867 | PGD10 Test Acc 0.5008 | Noise Rate 0.6000 | Valid Acc 0.5001
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [161 | 200] | Train Time: 111.00 s | Natural Test Acc 0.7872 | PGD10 Test Acc 0.4998 | Noise Rate 0.6000 | Valid Acc 0.5002
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [162 | 200] | Train Time: 110.00 s | Natural Test Acc 0.7877 | PGD10 Test Acc 0.5009 | Noise Rate 0.6000 | Valid Acc 0.5002
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [163 | 200] | Train Time: 111.00 s | Natural Test Acc 0.7900 | PGD10 Test Acc 0.4980 | Noise Rate 0.6000 | Valid Acc 0.4973
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [164 | 200] | Train Time: 110.00 s | Natural Test Acc 0.7882 | PGD10 Test Acc 0.4990 | Noise Rate 0.6000 | Valid Acc 0.4985
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [165 | 200] | Train Time: 110.00 s | Natural Test Acc 0.7915 | PGD10 Test Acc 0.5000 | Noise Rate 0.6000 | Valid Acc 0.5003
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [166 | 200] | Train Time: 111.00 s | Natural Test Acc 0.7906 | PGD10 Test Acc 0.4993 | Noise Rate 0.6000 | Valid Acc 0.4996
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [167 | 200] | Train Time: 110.00 s | Natural Test Acc 0.7956 | PGD10 Test Acc 0.4974 | Noise Rate 0.6000 | Valid Acc 0.4974
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [168 | 200] | Train Time: 110.00 s | Natural Test Acc 0.7920 | PGD10 Test Acc 0.4956 | Noise Rate 0.6000 | Valid Acc 0.4956
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [169 | 200] | Train Time: 110.00 s | Natural Test Acc 0.7938 | PGD10 Test Acc 0.4995 | Noise Rate 0.6000 | Valid Acc 0.4983
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [170 | 200] | Train Time: 111.00 s | Natural Test Acc 0.7900 | PGD10 Test Acc 0.4926 | Noise Rate 0.6000 | Valid Acc 0.4918
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [171 | 200] | Train Time: 110.00 s | Natural Test Acc 0.7906 | PGD10 Test Acc 0.4966 | Noise Rate 0.6000 | Valid Acc 0.4960
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [172 | 200] | Train Time: 110.00 s | Natural Test Acc 0.7943 | PGD10 Test Acc 0.4931 | Noise Rate 0.6000 | Valid Acc 0.4942
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [173 | 200] | Train Time: 110.00 s | Natural Test Acc 0.7925 | PGD10 Test Acc 0.4932 | Noise Rate 0.6000 | Valid Acc 0.4938
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [174 | 200] | Train Time: 110.00 s | Natural Test Acc 0.7973 | PGD10 Test Acc 0.4965 | Noise Rate 0.6000 | Valid Acc 0.4966
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [175 | 200] | Train Time: 110.00 s | Natural Test Acc 0.7975 | PGD10 Test Acc 0.4992 | Noise Rate 0.6000 | Valid Acc 0.4984
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [176 | 200] | Train Time: 111.00 s | Natural Test Acc 0.7901 | PGD10 Test Acc 0.4931 | Noise Rate 0.6000 | Valid Acc 0.4943
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [177 | 200] | Train Time: 110.00 s | Natural Test Acc 0.7971 | PGD10 Test Acc 0.4932 | Noise Rate 0.6000 | Valid Acc 0.4940
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [178 | 200] | Train Time: 110.00 s | Natural Test Acc 0.7932 | PGD10 Test Acc 0.4910 | Noise Rate 0.6000 | Valid Acc 0.4913
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [179 | 200] | Train Time: 110.00 s | Natural Test Acc 0.7954 | PGD10 Test Acc 0.4953 | Noise Rate 0.6000 | Valid Acc 0.4958
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [180 | 200] | Train Time: 110.00 s | Natural Test Acc 0.7987 | PGD10 Test Acc 0.4974 | Noise Rate 0.6000 | Valid Acc 0.4977
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [181 | 200] | Train Time: 111.00 s | Natural Test Acc 0.7983 | PGD10 Test Acc 0.4919 | Noise Rate 0.6000 | Valid Acc 0.4913
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [182 | 200] | Train Time: 110.00 s | Natural Test Acc 0.8002 | PGD10 Test Acc 0.4927 | Noise Rate 0.6000 | Valid Acc 0.4925
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [183 | 200] | Train Time: 110.00 s | Natural Test Acc 0.7984 | PGD10 Test Acc 0.4959 | Noise Rate 0.6000 | Valid Acc 0.4949
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [184 | 200] | Train Time: 110.00 s | Natural Test Acc 0.7999 | PGD10 Test Acc 0.4909 | Noise Rate 0.6000 | Valid Acc 0.4915
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [185 | 200] | Train Time: 110.00 s | Natural Test Acc 0.7991 | PGD10 Test Acc 0.4947 | Noise Rate 0.6000 | Valid Acc 0.4928
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [186 | 200] | Train Time: 111.00 s | Natural Test Acc 0.7980 | PGD10 Test Acc 0.4902 | Noise Rate 0.6000 | Valid Acc 0.4908
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [187 | 200] | Train Time: 110.00 s | Natural Test Acc 0.8049 | PGD10 Test Acc 0.4909 | Noise Rate 0.6000 | Valid Acc 0.4909
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [188 | 200] | Train Time: 110.00 s | Natural Test Acc 0.7963 | PGD10 Test Acc 0.4936 | Noise Rate 0.6000 | Valid Acc 0.4936
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [189 | 200] | Train Time: 110.00 s | Natural Test Acc 0.8002 | PGD10 Test Acc 0.4887 | Noise Rate 0.6000 | Valid Acc 0.4880
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [190 | 200] | Train Time: 110.00 s | Natural Test Acc 0.8030 | PGD10 Test Acc 0.4876 | Noise Rate 0.6000 | Valid Acc 0.4879
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [191 | 200] | Train Time: 110.00 s | Natural Test Acc 0.7995 | PGD10 Test Acc 0.4921 | Noise Rate 0.6000 | Valid Acc 0.4915
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [192 | 200] | Train Time: 111.00 s | Natural Test Acc 0.8039 | PGD10 Test Acc 0.4918 | Noise Rate 0.6000 | Valid Acc 0.4918
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [193 | 200] | Train Time: 110.00 s | Natural Test Acc 0.7900 | PGD10 Test Acc 0.4938 | Noise Rate 0.6000 | Valid Acc 0.4942
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [194 | 200] | Train Time: 110.00 s | Natural Test Acc 0.8007 | PGD10 Test Acc 0.4861 | Noise Rate 0.6000 | Valid Acc 0.4855
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [195 | 200] | Train Time: 110.00 s | Natural Test Acc 0.8007 | PGD10 Test Acc 0.4889 | Noise Rate 0.6000 | Valid Acc 0.4897
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [196 | 200] | Train Time: 110.00 s | Natural Test Acc 0.8089 | PGD10 Test Acc 0.4891 | Noise Rate 0.6000 | Valid Acc 0.4897
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [197 | 200] | Train Time: 110.00 s | Natural Test Acc 0.7987 | PGD10 Test Acc 0.4903 | Noise Rate 0.6000 | Valid Acc 0.4922
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [198 | 200] | Train Time: 110.00 s | Natural Test Acc 0.8016 | PGD10 Test Acc 0.4895 | Noise Rate 0.6000 | Valid Acc 0.4892
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [199 | 200] | Train Time: 110.00 s | Natural Test Acc 0.8037 | PGD10 Test Acc 0.4920 | Noise Rate 0.6000 | Valid Acc 0.4921
+
+setting parameters for standard version
+setting parameters for standard version
+Epoch: [200 | 200] | Train Time: 110.00 s | Natural Test Acc 0.8023 | PGD10 Test Acc 0.4913 | Noise Rate 0.6000 | Valid Acc 0.4907
+
