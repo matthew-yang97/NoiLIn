@@ -1,3 +1,5 @@
+AT_NoiLIn_ResNet18_cifar10_piecewise_eps0.031_clean_seed7/
+*.tar
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
